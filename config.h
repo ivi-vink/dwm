@@ -3,7 +3,7 @@
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "St"
-#define BROWSER "librewolf"
+#define BROWSER "firefox"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -21,7 +21,7 @@ static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
-static char selbordercolor[]        = "#770000";
+static char selbordercolor[]        = "#17293d";
 static char selbgcolor[]            = "#005577";
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -212,13 +212,13 @@ static const Key keys[] = {
 	{ MODKEY,			XK_z,          incrgaps,               {.i = +3 } },
 	/* { MODKEY|ShiftMask,		XK_z,          spawn,                  SHCMD("") }, */
 	{ MODKEY,			XK_x,          incrgaps,               {.i = -3 } },
-	/* { MODKEY|ShiftMask,		XK_x,          spawn,                  SHCMD("") }, */
+	{ MODKEY|ShiftMask,	  XK_x,	         spawn,	         {.v = (const char*[]){ "kx", NULL } } },
 	{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
-	/* { MODKEY|ShiftMask,		XK_c,          spawn,                  SHCMD("") }, */
+	{ MODKEY|ShiftMask,	  XK_c,	         spawn,		       {.v = (const char*[]){ TERMINAL, "-e", "tiny", NULL } } },
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,          togglebar,              {0} },
 	/* { MODKEY|ShiftMask,		XK_b,          spawn,                  SHCMD("") }, */
-	{ MODKEY,			XK_n,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
+	{ MODKEY,     XK_n,	         spawn,		               {.v = (const char*[]){ TERMINAL, "-e", "kn" , NULL } } },
 	{ MODKEY|ShiftMask,		XK_n,          spawn,                  SHCMD(TERMINAL " -e newsboat ; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
 	{ MODKEY|ShiftMask,		XK_m,          spawn,                  SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
@@ -253,7 +253,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_space,      zoom,                   {0} },
 	{ MODKEY|ShiftMask,		XK_space,      togglefloating,         {0} },
 
-	{ 0,				XK_Print,      spawn,                  SHCMD("maim pic-full-$(date '+%y%m%d-%H%M-%S').png") },
+	{ 0,        XK_Print,	     spawn,	                 SHCMD("maim -q -d 0.2 -i \"$(xdotool getactivewindow)\" | xclip -f -t image/png | xclip -sel c -t image/png ") },
 	{ ShiftMask,			XK_Print,      spawn,                  {.v = (const char*[]){ "maimpick", NULL } } },
 	{ MODKEY,			XK_Print,      spawn,		       {.v = (const char*[]){ "dmenurecord", NULL } } },
 	{ MODKEY|ShiftMask,		XK_Print,      spawn,                  {.v = (const char*[]){ "dmenurecord", "kill", NULL } } },
