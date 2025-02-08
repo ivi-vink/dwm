@@ -1,9 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "ghostty"
-#define TERMCLASS "Ghostty"
-#define BROWSER "surf-open.sh"
+#define TERMINAL "st"
+#define TERMCLASS "st"
+#define BROWSER "librewolf"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
